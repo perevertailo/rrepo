@@ -15,14 +15,23 @@ New supported endpoints:
 - `POST /api/v5.0/customers/list` – Retrieve paginated list of customers  
 
 New classes introduced under **DataTypes/V5/Customers/**:
+- `Contact.cs`
+- `Contract.cs`
+- `CustomerAddress.cs`
+- `CustomerResource.cs`
+- `CustomerContactResource.cs`  
+- `CustomerListResource.cs`  
+- `CustomerListResponse.cs`  
 - `CustomerResource.cs`  
 - `CustomerShowResource.cs`  
-- `CustomerListResource.cs`  
-- `FacilityResource.cs`  
-- `StoreRequest.cs`  
-- `UpdateRequest.cs`  
-- `CustomerListParameters.cs`  
-- `CustomerListFilters.cs` *(includes full XML documentation for all properties)*  
+- `Facility.cs`  
+- `StoreRequest.cs`
+
+**QueryTypes/V5/Customers/**:
+- `CustomerIdParameters.cs`
+- `CustomerListFilters.cs`
+- `CustomerListParameters.cs`
+- `UpdateCustomerParameters.cs`
 
 New manager under **Managers/**:
 - `CustomerManagerV5.cs` — provides sync and async access to all customer endpoints (`CreateCustomerV5`, `GetCustomerByIdV5`, `DeleteCustomerV5`, etc.)
@@ -30,15 +39,43 @@ New manager under **Managers/**:
 ### Changed
 - **Consts.cs** – added new API endpoints for `/api/v5.0/customers`.  
 - **Route4MeManagerV5.cs** – integrated `CustomerManagerV5` initialization into constructor for seamless V5 access.
+- **Enum.cs** – added new ContactType, AddressType, CustomerStatus enums
 
 ### Documentation
 - Added examples for all Customer API endpoints under `Examples/V5/Customers/`.  
 - Updated `README.md` with usage instructions for `CustomerManagerV5`.  
 - Updated `CHANGELOG.md` and internal metadata to reflect the new Customer Management feature.
 
+### Tests
+- Added **CustomersTests.cs** under `Route4MeSDKTest/V5/Customers/` to cover all new endpoints:  
+  - `CreateCustomerTest`
+  - `CreateCustomerAsyncTest`
+  - `GetCustomerByIdTest`  
+  - `GetCustomerByIdAsyncTest`  
+  - `UpdateCustomerTest`  
+  - `UpdateCustomerAsyncTest`
+  - `GetCustomersListTest`
+  - `GetCustomersListAsyncTest`
+  - `DeleteCustomerTest`
+  - `DeleteCustomerAsyncTest`  
+- Integration test coverage temporarily skipped — manual validation confirmed via working examples.
+
+### Examples
+- Added full usage examples under `Examples/API5/Customers/`:  
+  - `CreateCustomerV5.cs`
+  - `CreateCustomerV5Async.cs`  
+  - `GetCustomerByIdV5.cs`
+  - `GetCustomerByIdV5Async.cs`  
+  - `UpdateCustomerV5.cs`
+  - `UpdateCustomerV5Async.cs` 
+  - `DeleteCustomerV5.cs`
+  - `DeleteCustomerV5Async.cs` 
+  - `GetCustomersListV5.cs`
+  - `GetCustomersListV5Async.cs`
+- In examples demonstrates both sync and async SDK patterns.  
+- Examples are verified and compatible with the latest Route4Me API documentation.
+
 ### Notes
-- The combined endpoint (`/api/v5.0/customers/list/combined`) is intentionally excluded per API design.  
-- No integration tests required – verified through working usage examples.  
 - Implementation follows SDK async/sync conventions, SOLID principles, and thread-safety patterns.
 
 ## [7.12.1.0] - 2024-08-07
