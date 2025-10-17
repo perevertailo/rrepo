@@ -58,7 +58,7 @@ New manager under **Managers/**:
   - `GetCustomersListAsyncTest`
   - `DeleteCustomerTest`
   - `DeleteCustomerAsyncTest`  
-- Integration test coverage temporarily skipped — manual validation confirmed via working examples.
+- Integration test coverage temporarily skipped.
 
 ### Examples
 - Added full usage examples under `Examples/API5/Customers/`:  
